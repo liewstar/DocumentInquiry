@@ -42,6 +42,7 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
+          VITE_BASE_URL: '/DocumentInquiry/'
       
       # 创建404.html以支持SPA路由
       - name: Create 404.html for SPA routing
