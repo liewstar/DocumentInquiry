@@ -7,12 +7,14 @@ const getBaseUrl = () => {
   if (import.meta.env.VITE_API_URL) {
     return import.meta.env.VITE_API_URL
   }
-  // 在生产环境中直接使用服务器地址
+  // 在生产环境中使用CORS代理解决HTTPS混合内容问题
   if (import.meta.env.PROD) {
-    return 'http://8.137.36.93:8686'
+    // 使用CORS代理服务
+    return 'https://corsproxy.io/?url=' + encodeURIComponent('http://8.137.36.93:8686')
   }
   // 在开发环境中使用相对路径，由Vite代理转发
-  return '/api'
+  // return '/api'
+  return 'http://8.137.36.93:8686'
 }
 
 // 创建axios实例
