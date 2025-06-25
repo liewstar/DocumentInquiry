@@ -43,6 +43,7 @@ jobs:
         env:
           NODE_ENV: production
           VITE_BASE_URL: '/DocumentInquiry/'
+          VITE_API_URL: 'http://8.137.36.93:8686'
       
       # 创建404.html以支持SPA路由
       - name: Create 404.html for SPA routing

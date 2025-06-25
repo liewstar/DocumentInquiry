@@ -1,9 +1,23 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 
+// 确定API基础URL
+const getBaseUrl = () => {
+  // 优先使用环境变量中的API URL
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL
+  }
+  // 在生产环境中直接使用服务器地址
+  if (import.meta.env.PROD) {
+    return 'http://8.137.36.93:8686'
+  }
+  // 在开发环境中使用相对路径，由Vite代理转发
+  return '/api'
+}
+
 // 创建axios实例
 const http = axios.create({
-  baseURL: '/api', // 修改为相对路径，由Vite代理转发
+  baseURL: getBaseUrl(),
   timeout: 30000 // 增加超时时间到30秒
 })
 
