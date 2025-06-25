@@ -28,7 +28,7 @@ export default defineConfig({
     cors: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'http://8.137.36.93:8686',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
         timeout: 30000,
@@ -46,5 +46,6 @@ export default defineConfig({
         }
       }
     }
-  }
+  },
+  base: '/'
 }) 
